@@ -35,13 +35,18 @@ function bucket(value: number, [low, mid, high]: [string, string, string]): stri
 function buildCompass(profile: TravelerProfile): JourneyCompass {
   const d = profile.dimensions;
   const adventureRaw = (d.travelIntention + d.energyLevel + d.natureConnection) / 3;
-  const restorationRaw = (d.recoveryNeed + d.transformationGoal) / 2;
   return {
     adventure: bucket(adventureRaw, ["Quiet Exploration", "Balanced Exploration", "Wild Adventure"]),
     journeyPace: bucket(d.journeyPace, ["Slow Immersion", "Balanced Exploration", "Fast Expedition"]),
     comfortPhilosophy: profile.comfortPhilosophy,
     socialEnergy: bucket(d.socialPreference, ["Private Escape", "Balanced Connection", "Social Exploration"]),
-    restoration: bucket(restorationRaw, ["Deep Renewal", "Balanced Renewal", "Constant Activity"]),
+    // Restoration comes from Recovery Need alone — it's the one STM dimension
+    // that unambiguously measures need-for-rest. Low recovery need = the
+    // traveler wants constant activity; high recovery need = they need deep
+    // renewal. (transformationGoal was dropped from this formula — its scale
+    // conflates "wants rest" and "wants stimulation" into the same high
+    // values, which cancelled out the signal instead of reinforcing it.)
+    restoration: bucket(d.recoveryNeed, ["Constant Activity", "Balanced Renewal", "Deep Renewal"]),
   };
 }
 
