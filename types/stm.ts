@@ -58,3 +58,20 @@ export interface TravelerProfile {
   budgetTier: BudgetTier;
   tripDuration: TripDuration;
 }
+/** A single selectable option on an onboarding question screen. */
+export interface QuestionOption {
+  label: string; // shown to the traveler, e.g. "Feel refreshed"
+  value: string; // stored value, matches the corresponding OnboardingAnswers field
+}
+
+/**
+ * One onboarding question. The `id` matches a field on OnboardingAnswers,
+ * so the onboarding flow can write answers directly: answers[question.id] = value.
+ */
+export interface OnboardingQuestion {
+  id: keyof OnboardingAnswers;
+  prompt: string;
+  type: "select" | "freeText";
+  options?: QuestionOption[]; // present when type === "select"
+  optional?: boolean; // true only for hiddenIntent
+}
