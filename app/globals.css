@@ -128,3 +128,18 @@
     @apply font-sans;
   }
 }
+/* --- Swafaris brand tokens & typography --- */
+:root {
+  --safari-black: #0b0b0c;
+  --savannah-gold: #c9a227;
+  --ivory: #f8f6f1;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body), ui-sans-serif, system-ui;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display), serif;
+  }
+}
