@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useJourney } from "@/components/provider/JourneyProvider";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { sampleBlueprint } from "@/config/demo";
 import { Container } from "@/components/layout/Container";
+import { ExperienceCard } from "@/components/journey/ExperienceCard";
 import { Section } from "@/components/layout/Section";
 
 const POSITION_MAP: Record<string, string> = {
@@ -41,7 +42,7 @@ export default function BlueprintPage() {
       <Section className="pt-24 pb-16 text-center">
         <Container>
           <p className="text-amber-400 uppercase tracking-[0.3em] text-sm mb-6">Your Travel Identity</p>
-          <h1 className="text-4xl md:text-6xl font-semibold mb-8">{data.identityTitle}</h1>
+          <h1 className="font-display text-4xl md:text-7xl font-medium mb-8">{data.identityTitle}</h1>
         </Container>
       </Section>
 
@@ -93,25 +94,10 @@ export default function BlueprintPage() {
 
       <Section className="bg-neutral-900">
         <Container>
-          <h2 className="text-lg text-amber-400 uppercase tracking-[0.2em] mb-10 text-center">Recommended Experiences</h2>
+          <h2 className="font-display text-2xl text-amber-400 tracking-wide mb-10 text-center">Recommended Experiences</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {data.experienceCards.map((card) => (
-              <div key={card.lodgeId} className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6">
-                <p className="text-xs uppercase tracking-widest text-amber-400 mb-2">{TIER_LABEL[card.tier]}</p>
-                <h3 className="text-xl font-semibold mb-1">{card.name}</h3>
-                <p className="text-sm text-neutral-500 mb-4">{card.region} · {card.journeyRole}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {card.tags.map((tag) => (
-                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-neutral-900 text-neutral-400">{tag}</span>
-                  ))}
-                </div>
-                <p className="text-neutral-300 mb-4">{card.emotionalDescription}</p>
-                <ul className="space-y-1">
-                  {card.whySelected.map((reason) => (
-                    <li key={reason} className="text-sm text-neutral-400">✓ {reason}</li>
-                  ))}
-                </ul>
-              </div>
+              <ExperienceCard key={card.lodgeId} card={card} />
             ))}
           </div>
         </Container>

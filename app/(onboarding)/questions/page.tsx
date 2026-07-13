@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { onboardingQuestions } from "@/data/questions";
-import { useJourney } from "@/components/provider/JourneyProvider";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { QuestionCard } from "@/components/onboarding/QuestionCard";
 import { Container } from "@/components/layout/Container";
 

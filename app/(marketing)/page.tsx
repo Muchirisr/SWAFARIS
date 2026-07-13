@@ -1,27 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-
+import { Hero } from "@/components/layout/Hero";
 export default function LandingPage() {
   return (
     <main>
-      <Section className="min-h-[90vh] flex items-center bg-gradient-to-b from-neutral-950 to-neutral-900">
-        <Container className="text-center">
-          <p className="text-amber-400 uppercase tracking-[0.3em] text-sm mb-6">Swafaris</p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">Discover Kenya, your way.</h1>
-          <p className="text-neutral-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Curated by intelligence. Felt by heart.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/begin" className="px-8 py-4 rounded-full bg-amber-400 text-neutral-950 font-medium hover:bg-amber-300 transition-colors">
-              Begin Your Journey
-            </Link>
-            <a href="#how-it-works" className="px-8 py-4 rounded-full border border-neutral-700 text-neutral-200 font-medium hover:border-neutral-500 transition-colors">
-              How It Works
-            </a>
-          </div>
-        </Container>
-      </Section>
+      <Hero />
 
       <Section id="how-it-works" className="bg-neutral-950">
         <Container>

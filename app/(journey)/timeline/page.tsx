@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useJourney } from "@/components/provider/JourneyProvider";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { sampleBlueprint } from "@/config/demo";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";

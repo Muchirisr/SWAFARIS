@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useJourney } from "@/components/provider/JourneyProvider";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { Container } from "@/components/layout/Container";
 
 const STAGES = [

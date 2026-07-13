@@ -143,3 +143,10 @@
     font-family: var(--font-display), serif;
   }
 }
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
