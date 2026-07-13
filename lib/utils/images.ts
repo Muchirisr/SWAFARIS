@@ -6,5 +6,5 @@ export function getLodgeImagePath(lodgeId: string): string {
 }
 
 export function getHeroImagePath(): string {
-  return "/images/hero/hero-safari.jpg";
+  return "/images/hero/Hero-safari.jpg";
 }
