@@ -1,0 +1,220 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Lodge {
+  id         String @id
+  name       String
+  region     String
+  ecosystem  String
+  budgetTier String @map("budget_tier")
+
+  pairsWellWith String[] @map("pairs_well_with")
+
+  experienceDna LodgeExperienceDna?
+  narrative     LodgeNarrative?
+  chapters      JourneyChapter[]
+  cards         ExperienceCard[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("lodges")
+}
+
+model LodgeExperienceDna {
+  id      String @id @default(uuid())
+  lodgeId String @unique @map("lodge_id")
+  lodge   Lodge  @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+
+  emotionalTone     String[] @map("emotional_tone")
+  energyType        String[] @map("energy_type")
+  experiencePace    String   @map("experience_pace")
+  comfortPhilosophy String[] @map("comfort_philosophy")
+  journeyRole       String   @map("journey_role")
+
+  idealTravelersPrimary   String[] @map("ideal_travelers_primary")
+  idealTravelersSecondary String[] @map("ideal_travelers_secondary")
+
+  intensityScore    Int @map("intensity_score")
+  relaxationScore   Int @map("relaxation_score")
+  authenticityScore Int @map("authenticity_score")
+  premiumScore      Int @map("premium_score")
+
+  socialDynamic String @map("social_dynamic")
+  travelFatigue String @map("travel_fatigue")
+
+  @@map("lodge_experience_dna")
+}
+
+model LodgeNarrative {
+  id      String @id @default(uuid())
+  lodgeId String @unique @map("lodge_id")
+  lodge   Lodge  @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+
+  whyChosen           String @map("why_chosen")
+  bestUsedFor         String @map("best_used_for")
+  lessSuitableFor     String @map("less_suitable_for")
+  journeyPositionNote String @map("journey_position_note")
+
+  @@map("lodge_narrative")
+}
+
+model OnboardingQuestion {
+  id        String  @id
+  prompt    String
+  type      String
+  optional  Boolean @default(false)
+  sortOrder Int     @map("sort_order")
+
+  options OnboardingQuestionOption[]
+
+  @@map("onboarding_questions")
+}
+
+model OnboardingQuestionOption {
+  id         String             @id @default(uuid())
+  questionId String             @map("question_id")
+  question   OnboardingQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  label     String
+  value     String
+  sortOrder Int    @map("sort_order")
+
+  @@map("onboarding_question_options")
+}
+
+model Traveler {
+  id    String  @id @default(uuid())
+  email String? @unique
+
+  sessions OnboardingSession[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("travelers")
+}
+
+model OnboardingSession {
+  id String @id @default(uuid())
+
+  travelerId String?   @map("traveler_id")
+  traveler   Traveler? @relation(fields: [travelerId], references: [id], onDelete: SetNull)
+
+  answers     Json
+  completedAt DateTime? @map("completed_at")
+
+  profile   TravelerProfile?
+  blueprint JourneyBlueprint?
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("onboarding_sessions")
+}
+
+model TravelerProfile {
+  id String @id @default(uuid())
+
+  sessionId String            @unique @map("session_id")
+  session   OnboardingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  archetypePrimary   String @map("archetype_primary")
+  archetypeSecondary String @map("archetype_secondary")
+
+  dimensions Json
+
+  comfortPhilosophy String @map("comfort_philosophy")
+  hiddenIntent      String @map("hidden_intent")
+  budgetTier        String @map("budget_tier")
+  tripDuration      String @map("trip_duration")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("traveler_profiles")
+}
+
+model JourneyBlueprint {
+  id String @id @default(uuid())
+
+  sessionId String            @unique @map("session_id")
+  session   OnboardingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  identityTitle     String @map("identity_title")
+  journeyTheme      String @map("journey_theme")
+  journeyPhilosophy String @map("journey_philosophy")
+  compass           Json
+  whyThisFits       String @map("why_this_fits")
+  summary           Json
+
+  aiEnriched Boolean @default(false) @map("ai_enriched")
+  shareSlug  String  @unique @map("share_slug")
+
+  chapters JourneyChapter[]
+  cards    ExperienceCard[]
+  leads    Lead[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("journey_blueprints")
+}
+
+model JourneyChapter {
+  id String @id @default(uuid())
+
+  blueprintId String           @map("blueprint_id")
+  blueprint   JourneyBlueprint @relation(fields: [blueprintId], references: [id], onDelete: Cascade)
+
+  lodgeId String @map("lodge_id")
+  lodge   Lodge  @relation(fields: [lodgeId], references: [id])
+
+  dayRange   String   @map("day_range")
+  title      String
+  region     String
+  purpose    String
+  highlights String[]
+  order      Int
+
+  @@map("journey_chapters")
+}
+
+model ExperienceCard {
+  id String @id @default(uuid())
+
+  blueprintId String           @map("blueprint_id")
+  blueprint   JourneyBlueprint @relation(fields: [blueprintId], references: [id], onDelete: Cascade)
+
+  lodgeId String @map("lodge_id")
+  lodge   Lodge  @relation(fields: [lodgeId], references: [id])
+
+  tags                 String[]
+  emotionalDescription String   @map("emotional_description")
+  whySelected          String[] @map("why_selected")
+  tier                 String
+  order                Int
+
+  @@map("experience_cards")
+}
+
+model Lead {
+  id String @id @default(uuid())
+
+  blueprintId String?           @map("blueprint_id")
+  blueprint   JourneyBlueprint? @relation(fields: [blueprintId], references: [id], onDelete: SetNull)
+
+  name    String
+  email   String
+  phone   String?
+  channel String
+  message String?
+  status  String  @default("new")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("leads")
+}
