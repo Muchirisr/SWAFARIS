@@ -6,49 +6,55 @@ import { onboardingQuestions } from "../data/questions/questions";
 const prisma = new PrismaClient();
 
 async function seedLodges() {
-  // Wipe existing lodge data first — safe right now because no
-  // journey_chapters or experience_cards rows reference a lodge yet.
-  await prisma.lodge.deleteMany();
-
   for (const lodge of lodges) {
-    await prisma.lodge.create({
-      data: {
+    const experienceDnaData = {
+      emotionalTone: lodge.experienceDNA.emotionalTone,
+      energyType: lodge.experienceDNA.energyType,
+      experiencePace: lodge.experienceDNA.experiencePace,
+      comfortPhilosophy: lodge.experienceDNA.comfortPhilosophy,
+      journeyRole: lodge.experienceDNA.journeyRole,
+      idealTravelersPrimary: lodge.experienceDNA.idealTravelers.primary,
+      idealTravelersSecondary: lodge.experienceDNA.idealTravelers.secondary,
+      intensityScore: lodge.experienceDNA.intensityScore,
+      relaxationScore: lodge.experienceDNA.relaxationScore,
+      authenticityScore: lodge.experienceDNA.authenticityScore,
+      premiumScore: lodge.experienceDNA.premiumScore,
+      socialDynamic: lodge.experienceDNA.socialDynamic,
+      travelFatigue: lodge.experienceDNA.travelFatigue,
+    };
+
+    const narrativeData = {
+      whyChosen: lodge.whyChosen,
+      bestUsedFor: lodge.bestUsedFor,
+      lessSuitableFor: lodge.lessSuitableFor,
+      journeyPositionNote: lodge.journeyPositionNote,
+    };
+
+    await prisma.lodge.upsert({
+      where: { id: lodge.id },
+      create: {
         id: lodge.id,
         name: lodge.name,
         region: lodge.region,
         ecosystem: lodge.ecosystem,
         budgetTier: lodge.budgetTier,
         pairsWellWith: lodge.pairsWellWith,
-        experienceDna: {
-          create: {
-            emotionalTone: lodge.experienceDNA.emotionalTone,
-            energyType: lodge.experienceDNA.energyType,
-            experiencePace: lodge.experienceDNA.experiencePace,
-            comfortPhilosophy: lodge.experienceDNA.comfortPhilosophy,
-            journeyRole: lodge.experienceDNA.journeyRole,
-            idealTravelersPrimary: lodge.experienceDNA.idealTravelers.primary,
-            idealTravelersSecondary: lodge.experienceDNA.idealTravelers.secondary,
-            intensityScore: lodge.experienceDNA.intensityScore,
-            relaxationScore: lodge.experienceDNA.relaxationScore,
-            authenticityScore: lodge.experienceDNA.authenticityScore,
-            premiumScore: lodge.experienceDNA.premiumScore,
-            socialDynamic: lodge.experienceDNA.socialDynamic,
-            travelFatigue: lodge.experienceDNA.travelFatigue,
-          },
-        },
-        narrative: {
-          create: {
-            whyChosen: lodge.whyChosen,
-            bestUsedFor: lodge.bestUsedFor,
-            lessSuitableFor: lodge.lessSuitableFor,
-            journeyPositionNote: lodge.journeyPositionNote,
-          },
-        },
+        experienceDna: { create: experienceDnaData },
+        narrative: { create: narrativeData },
+      },
+      update: {
+        name: lodge.name,
+        region: lodge.region,
+        ecosystem: lodge.ecosystem,
+        budgetTier: lodge.budgetTier,
+        pairsWellWith: lodge.pairsWellWith,
+        experienceDna: { upsert: { create: experienceDnaData, update: experienceDnaData } },
+        narrative: { upsert: { create: narrativeData, update: narrativeData } },
       },
     });
   }
 
-  console.log(`Seeded ${lodges.length} lodges.`);
+  console.log(`Upserted ${lodges.length} lodges.`);
 }
 
 async function seedQuestions() {
