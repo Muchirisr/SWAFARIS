@@ -15,7 +15,7 @@ import { getAllLodges } from "@/lib/edf/lodgeQueries";
 import { scoreLodges } from "@/lib/sme/scoreLodges";
 import { sequenceJourney } from "@/lib/jse/sequenceJourney";
 
-const ACT_TITLES: Record<JourneyAct, string> = {
+export const ACT_TITLES: Record<JourneyAct, string> = {
   arrival: "Arrival", immersion: "Immersion", climax: "Safari Peak", reflection: "Reflection", farewell: "Farewell",
 };
 const ACT_PURPOSE: Record<JourneyAct, string> = {
