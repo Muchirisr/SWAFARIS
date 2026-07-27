@@ -1,0 +1,162 @@
+{
+  "identityTitle": "The Restored Explorer",
+  "journeyTheme": "From exhaustion to wonder.",
+  "journeyPhilosophy": "Your journey begins with slow immersion, allowing space to arrive fully before the experience deepens. As The Restored Explorer, you're drawn toward balanced exploration, guided by a quiet luxury sensibility. The days ahead are shaped around deep renewal, so the journey gives back as much as it asks of you.",
+  "compass": {
+    "adventure": "Balanced Exploration",
+    "journeyPace": "Slow Immersion",
+    "comfortPhilosophy": "Quiet Luxury",
+    "socialEnergy": "Private Escape",
+    "restoration": "Deep Renewal"
+  },
+  "whyThisFits": "Your responses suggest you are seeking more than a holiday. As The Restored Explorer, you value private escape and a rhythm defined by slow immersion. Rather than moving quickly between destinations, this journey builds intentionally toward its peak before allowing time for deep renewal.",
+  "architecture": [
+    {
+      "act": "immersion",
+      "title": "Immersion",
+      "purpose": "Discovering Kenya's landscapes and rhythms.",
+      "lodgeId": "saruni-samburu"
+    },
+    {
+      "act": "climax",
+      "title": "Safari Peak",
+      "purpose": "The moment your journey reaches its emotional height.",
+      "lodgeId": "the-cliff"
+    },
+    {
+      "act": "reflection",
+      "title": "Reflection",
+      "purpose": "Space to process and restore before the journey closes.",
+      "lodgeId": "enashipai-resort-spa"
+    },
+    {
+      "act": "farewell",
+      "title": "Farewell",
+      "purpose": "Creating the memory that will stay with you.",
+      "lodgeId": "almanara-luxury-boutique-hotel"
+    }
+  ],
+  "experienceCards": [
+    {
+      "lodgeId": "saruni-samburu",
+      "name": "Saruni Samburu",
+      "region": "Kalama Conservancy, Samburu",
+      "journeyRole": "Adventure Transition",
+      "tags": [
+        "Wild",
+        "Grounded",
+        "Transformative"
+      ],
+      "emotionalDescription": "Saruni Samburu holds the highest Authenticity Score in the database, and it earns it: Samburu is culturally and ecologically distinct from the Mara-Amboseli circuit, and this property's deep community ties make that distinction real rather than marketed.",
+      "whySelected": [
+        "Supports the recovery your journey calls for"
+      ],
+      "tier": "supporting"
+    },
+    {
+      "lodgeId": "the-cliff",
+      "name": "The Cliff",
+      "region": "Mara North Conservancy, Maasai Mara",
+      "journeyRole": "Safari Climax",
+      "tags": [
+        "Cinematic",
+        "Romantic",
+        "Intimate"
+      ],
+      "emotionalDescription": "Perched above the conservancy rather than embedded flat within it, The Cliff offers something rarer than proximity to wildlife: perspective on it.",
+      "whySelected": [
+        "Supports the recovery your journey calls for"
+      ],
+      "tier": "supporting"
+    },
+    {
+      "lodgeId": "enashipai-resort-spa",
+      "name": "Enashipai Resort & Spa",
+      "region": "Lake Naivasha, Rift Valley",
+      "journeyRole": "Recovery Reset",
+      "tags": [
+        "Peaceful",
+        "Elegant",
+        "Grounded"
+      ],
+      "emotionalDescription": "Enashipai's value lies in proximity and ease.",
+      "whySelected": [
+        "Strongly aligned with the Burned-Out Executives traveler profile",
+        "Supports the recovery your journey calls for",
+        "Fits the emotional intention behind your journey"
+      ],
+      "tier": "strong"
+    },
+    {
+      "lodgeId": "almanara-luxury-boutique-hotel",
+      "name": "Almanara Luxury Boutique Hotel",
+      "region": "Diani, Kenyan Coast",
+      "journeyRole": "Romantic Finale",
+      "tags": [
+        "Peaceful",
+        "Romantic",
+        "Intimate"
+      ],
+      "emotionalDescription": "Almanara carries the highest Relaxation Score in the entire database, and its role in the system is singular: it is where a Swafaris journey exhales.",
+      "whySelected": [
+        "Matches your quiet luxury sensibility",
+        "Supports the recovery your journey calls for",
+        "Fits the emotional intention behind your journey"
+      ],
+      "tier": "exceptional"
+    }
+  ],
+  "timeline": [
+    {
+      "dayRange": "Days 1-3",
+      "title": "Immersion",
+      "region": "Kalama Conservancy, Samburu",
+      "purpose": "Discovering Kenya's landscapes and rhythms.",
+      "lodgeId": "saruni-samburu",
+      "highlights": [
+        "Travelers with high Authenticity Appetite; slow travelers wanting depth over checklist coverage; burned-out executives needing nature without giving up quality."
+      ]
+    },
+    {
+      "dayRange": "Days 4-6",
+      "title": "Safari Peak",
+      "region": "Mara North Conservancy, Maasai Mara",
+      "purpose": "The moment your journey reaches its emotional height.",
+      "lodgeId": "the-cliff",
+      "highlights": [
+        "Honeymooners and couples wanting privacy without sacrificing wilderness; luxury adventurers wanting something quieter and more elevated than mainstream Mara camps."
+      ]
+    },
+    {
+      "dayRange": "Days 7-9",
+      "title": "Reflection",
+      "region": "Lake Naivasha, Rift Valley",
+      "purpose": "Space to process and restore before the journey closes.",
+      "lodgeId": "enashipai-resort-spa",
+      "highlights": [
+        "Travelers needing a gentle on-ramp into nature without full wilderness intensity; recovery-oriented travelers wanting restorative early days; families easing into the trip."
+      ]
+    },
+    {
+      "dayRange": "Day 10",
+      "title": "Farewell",
+      "region": "Diani, Kenyan Coast",
+      "purpose": "Creating the memory that will stay with you.",
+      "lodgeId": "almanara-luxury-boutique-hotel",
+      "highlights": [
+        "Honeymooners closing their journey with romance; burned-out or recovery-oriented travelers needing real decompression."
+      ]
+    }
+  ],
+  "summary": {
+    "journeyStyle": "Quiet Luxury Safari",
+    "duration": "9-12 Days",
+    "regions": [
+      "Kalama Conservancy, Samburu",
+      "Mara North Conservancy, Maasai Mara",
+      "Lake Naivasha, Rift Valley",
+      "Diani, Kenyan Coast"
+    ],
+    "philosophy": "Explore deeply. Rest intentionally. Return transformed."
+  }
+}
