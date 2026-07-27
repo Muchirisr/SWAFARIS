@@ -16,23 +16,25 @@ export default function ProcessingPage() {
   const router = useRouter();
   const { generateBlueprint } = useJourney();
   const [stage, setStage] = useState(0);
+  const [blueprintReady, setBlueprintReady] = useState(false);
   const hasGenerated = useRef(false);
 
   useEffect(() => {
     if (!hasGenerated.current) {
       hasGenerated.current = true;
-      generateBlueprint();
+      generateBlueprint().then(() => setBlueprintReady(true));
     }
   }, [generateBlueprint]);
 
   useEffect(() => {
     if (stage >= STAGES.length - 1) {
+      if (!blueprintReady) return; // animation's done, but the fetch isn't yet — wait
       const t = setTimeout(() => router.push("/reveal"), 1300);
       return () => clearTimeout(t);
     }
     const t = setTimeout(() => setStage((s) => s + 1), 1300);
     return () => clearTimeout(t);
-  }, [stage, router]);
+  }, [stage, blueprintReady, router]);
 
   return (
     <main className="min-h-screen bg-neutral-950 flex items-center justify-center">

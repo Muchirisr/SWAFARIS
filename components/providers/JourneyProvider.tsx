@@ -3,7 +3,6 @@
 import { createContext, useCallback, useContext, useState } from "react";
 import type { OnboardingAnswers } from "@/types/stm";
 import type { JourneyBlueprint } from "@/types/journey";
-import { buildJourneyBlueprint } from "@/lib/sre/buildBlueprint";
 import { sampleBlueprint } from "@/config/demo";
 
 type PartialAnswers = Partial<OnboardingAnswers>;
@@ -12,7 +11,7 @@ interface JourneyContextValue {
   answers: PartialAnswers;
   setAnswer: (id: keyof OnboardingAnswers, value: string) => void;
   blueprint: JourneyBlueprint | null;
-  generateBlueprint: () => void;
+  generateBlueprint: () => Promise<void>;
 }
 
 const JourneyContext = createContext<JourneyContextValue | null>(null);
@@ -25,9 +24,19 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
     setAnswers((prev) => ({ ...prev, [id]: value }));
   }, []);
 
-  const generateBlueprint = useCallback(() => {
+  const generateBlueprint = useCallback(async () => {
     try {
-      const result = buildJourneyBlueprint(answers as OnboardingAnswers);
+      const response = await fetch("/api/journey/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(answers),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Journey generation failed: ${response.status}`);
+      }
+
+      const result: JourneyBlueprint = await response.json();
       setBlueprint(result);
     } catch (err) {
       console.error("Falling back to demo blueprint:", err);
