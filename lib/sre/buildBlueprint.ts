@@ -58,9 +58,9 @@ function buildWhyThisFits(identityTitle: string, compass: JourneyCompass): strin
   return `Your responses suggest you are seeking more than a holiday. As ${identityTitle}, you value ${compass.socialEnergy.toLowerCase()} and a rhythm defined by ${compass.journeyPace.toLowerCase()}. Rather than moving quickly between destinations, this journey builds intentionally toward its peak before allowing time for ${compass.restoration.toLowerCase()}.`;
 }
 
-export function buildJourneyBlueprint(answers: OnboardingAnswers): JourneyBlueprint {
+export async function buildJourneyBlueprint(answers: OnboardingAnswers): Promise<JourneyBlueprint> {
   const profile = scoreProfile(answers);
-  const lodges = getAllLodges();
+ const lodges = await getAllLodges();
   const lodgeMap = new Map(lodges.map((l) => [l.id, l]));
 
   const scores = scoreLodges(profile, lodges);
