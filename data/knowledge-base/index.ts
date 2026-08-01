@@ -11,6 +11,14 @@ import { fairmontMaraSafariClub } from "./maasai-mara/fairmont-mara-safari-club"
 import { enchoroWildlifeCamp } from "./maasai-mara/enchoro-wildlife-camp";
 import { maraOlodareCamp } from "./maasai-mara/mara-olodare-camp";
 import { mahaliMzuri } from "./maasai-mara/mahali-mzuri";
+// data/knowledge-base/index.ts
+import { sentrimAmboseliLodge } from "./amboseli/sentrim-amboseli-lodge";
+import { amboseliSopaLodge } from "./amboseli/amboseli-sopa-lodge";
+import { olTukaiLodgeEnrichment } from "./amboseli/ol-tukai-lodge";
+import { kiboSafariCampEnrichment } from "./amboseli/kibo-safari-camp";
+import { littleAmanyaCamp } from "./amboseli/little-amanya-camp";
+import { nyatiSafariCamp } from "./amboseli/nyati-safari-camp";
+import { penetyAmboseliResort } from "./amboseli/penety-amboseli-resort";
 
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
@@ -25,4 +33,11 @@ export const knowledgeBaseLodges = [
   enchoroWildlifeCamp,
   maraOlodareCamp,
   mahaliMzuri,
+  sentrimAmboseliLodge,
+  amboseliSopaLodge,
+  olTukaiLodgeEnrichment,
+  kiboSafariCampEnrichment,
+  littleAmanyaCamp,
+  nyatiSafariCamp,
+  penetyAmboseliResort
 ];

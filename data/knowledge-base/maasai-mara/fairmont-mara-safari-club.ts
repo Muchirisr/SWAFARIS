@@ -25,7 +25,7 @@ export const fairmontMaraSafariClub = {
   rawSourceJson: { /* full source doc, verbatim */ },
 
   experienceDna: {
-    emotionalTone: ["Cinematic", "Elegant", "Social"], // all approved, no change needed
+    emotionalTone: [ "Elegant", "Social"], // all approved, no change needed
     energyType: ["Luxury Escape", "Wildlife Focus", "Nature Immersion"], // confirmed
     experiencePace: "Moderate", // normalized from "Balanced"
     comfortPhilosophy: ["Comfort Luxury", "Authentic Luxury"],

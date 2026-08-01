@@ -25,7 +25,7 @@ export const maraIntrepids = {
   rawSourceJson: { /* full source doc, verbatim */ },
 
   experienceDna: {
-    emotionalTone: ["Cinematic", "Social", "Wild"], // all approved, no change needed
+    emotionalTone: ["Elegant", "Social", "Wild"], // all approved, no change needed
     energyType: ["Adventure", "Wildlife Focus"], // normalized from "High-Energy Safari" / "Immersive Nature"
     experiencePace: "Moderate", // normalized from "Balanced"
     comfortPhilosophy: ["Comfort Luxury", "Authentic Luxury"], // KEPT unchanged, both values retained per founder decision

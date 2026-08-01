@@ -25,7 +25,7 @@ export const mahaliMzuri = {
   rawSourceJson: { /* full source doc, verbatim */ },
 
   experienceDna: {
-    emotionalTone: ["Cinematic", "Elegant", "Social"], // all approved, no change needed
+    emotionalTone: [ "Elegant", "Social"], // all approved, no change needed
     energyType: ["Luxury Escape", "Wildlife Focus"], // confirmed normalization
     experiencePace: "Moderate", // confirmed normalization from "Balanced"
     comfortPhilosophy: ["Exclusive Luxury", "Comfort Luxury"],
