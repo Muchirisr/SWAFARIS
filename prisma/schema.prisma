@@ -17,10 +17,32 @@ model Lodge {
 
   pairsWellWith String[] @map("pairs_well_with")
 
+  country                String?
+  subRegion              String?
+  propertyType           String?
+  accommodationStyle     String?
+  locationDetail         String?
+  nearestGate            String?
+  nearestAirstrips       String[] @default([])
+  accessibilityNotes     String?
+  priceRangeMinUsd       Int?
+  priceRangeMaxUsd       Int?
+  rawMarketTier          String?  @map("raw_market_tier")
+  swafarisExperienceTier String?  @map("swafaris_experience_tier")
+  experienceIdentity     String?  @map("experience_identity")
+  rawSourceJson          Json?
+
   experienceDna LodgeExperienceDna?
   narrative     LodgeNarrative?
   chapters      JourneyChapter[]
   cards         ExperienceCard[]
+
+  operationalIntelligence LodgeOperationalIntelligence?
+  travelerMatches         LodgeTravelerMatch[]
+  journeyIntelligence     LodgeJourneyIntelligence?
+  recommendationNotes     LodgeRecommendationNotes?
+  pairings                LodgePairing[]
+  dataQuality             LodgeDataQuality?
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -50,6 +72,14 @@ model LodgeExperienceDna {
   socialDynamic String @map("social_dynamic")
   travelFatigue String @map("travel_fatigue")
 
+  comfortPhilosophyDetailed String? @map("comfort_philosophy_detailed")
+  adventureScore            Int?
+  privacyScore              Int?
+  wildlifeExperienceScore   Int?
+  culturalImmersionScore    Int?
+  familySuitabilityScore    Int?
+  comfortScore              Int?
+
   @@map("lodge_experience_dna")
 }
 
@@ -62,6 +92,16 @@ model LodgeNarrative {
   bestUsedFor         String @map("best_used_for")
   lessSuitableFor     String @map("less_suitable_for")
   journeyPositionNote String @map("journey_position_note")
+
+  overview              String?
+  emotionalFeel         String?
+  sensorySignature      Json?
+  positiveSignals       String[] @default([])
+  negativeSignals       String[] @default([])
+  hiddenGems            String[] @default([])
+  signatureMemory       String?
+  expectationManagement String?
+  idealNights           String?
 
   @@map("lodge_narrative")
 }
@@ -217,4 +257,91 @@ model Lead {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("leads")
+}
+
+model LodgeOperationalIntelligence {
+  id                     String  @id @default(uuid())
+  lodgeId                String  @unique @map("lodge_id")
+  lodge                  Lodge   @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  accessibilityScore     Int?
+  transferTime           String?
+  seasonalAccessibility  String?
+  rainySeasonImpact      String?
+  electricitySystem      String?
+  powerReliability       String?
+  waterReliability       String?
+  internetAvailability   String?
+  mobileNetwork          String?
+  medicalAccess          String?
+  childFriendly          Boolean?
+  mobilityFriendly       Boolean?
+  operationalLimitations String[] @default([])
+
+  @@map("lodge_operational_intelligence")
+}
+
+model LodgeTravelerMatch {
+  id                 String  @id @default(uuid())
+  lodgeId            String  @map("lodge_id")
+  lodge              Lodge   @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  fitType            String
+  category           String
+  archetype          String?
+  matchStrength      String?
+  reasoning          String
+  supportingSignals  String[] @default([])
+  mismatchConditions String[] @default([])
+
+  @@map("lodge_traveler_matches")
+}
+
+model LodgeJourneyIntelligence {
+  id                           String  @id @default(uuid())
+  lodgeId                      String  @unique @map("lodge_id")
+  lodge                        Lodge   @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  idealStayDuration            String?
+  recommendedPositionNote      String?
+  whatShouldComeBefore         String?
+  whatShouldComeAfter          String?
+  emotionalTransitionRationale String?
+
+  @@map("lodge_journey_intelligence")
+}
+
+model LodgeRecommendationNotes {
+  id                       String @id @default(uuid())
+  lodgeId                  String @unique @map("lodge_id")
+  lodge                    Lodge  @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  recommendConditions      String[] @map("recommend_conditions")
+  doNotRecommendConditions String[] @map("do_not_recommend_conditions")
+  confidenceLevel          String   @map("confidence_level")
+  competitiveAdvantage     String?
+  mainLimitation           String?
+  positioningSummary       String?
+
+  @@map("lodge_recommendation_notes")
+}
+
+model LodgePairing {
+  id              String @id @default(uuid())
+  lodgeId         String @map("lodge_id")
+  lodge           Lodge  @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  pairedEntity    String @map("paired_entity")
+  pairingCategory String
+  pairingType     String?
+  rationale       String
+
+  @@map("lodge_pairings")
+}
+
+model LodgeDataQuality {
+  id                       String    @id @default(uuid())
+  lodgeId                  String    @unique @map("lodge_id")
+  lodge                    Lodge     @relation(fields: [lodgeId], references: [id], onDelete: Cascade)
+  researchDate             DateTime?
+  sourcesConsulted         String[]  @default([])
+  confidenceLevel          String?
+  verificationRequirements String[]  @default([])
+
+  @@map("lodge_data_quality")
 }

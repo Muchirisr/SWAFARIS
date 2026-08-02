@@ -19,6 +19,10 @@ import { kiboSafariCampEnrichment } from "./amboseli/kibo-safari-camp";
 import { littleAmanyaCamp } from "./amboseli/little-amanya-camp";
 import { nyatiSafariCamp } from "./amboseli/nyati-safari-camp";
 import { penetyAmboseliResort } from "./amboseli/penety-amboseli-resort";
+import { lakeNakuruLodge } from "./nakuru/lake-nakuru-lodge";
+import { hillcourtResortAndSpa } from "./nakuru/hillcourt-resort-and-spa";
+import { theCliff } from "./nakuru/the-cliff";
+import { sawelaCapellaLodge } from "./nakuru/sawela-capella-lodge";
 
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
@@ -39,5 +43,9 @@ export const knowledgeBaseLodges = [
   kiboSafariCampEnrichment,
   littleAmanyaCamp,
   nyatiSafariCamp,
-  penetyAmboseliResort
+  penetyAmboseliResort,
+  lakeNakuruLodge,
+  hillcourtResortAndSpa,
+  theCliff,
+  sawelaCapellaLodge
 ];
