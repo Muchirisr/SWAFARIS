@@ -37,6 +37,10 @@ import { outspanHotelNyeri } from "./aberdare/outspan-hotel-nyeri";
 import { bantuAfricaResort } from "./aberdare/bantu-africa-resort";
 import { lePristineHotel } from "./aberdare/le-pristine-hotel";
 import { whiteRhinoHotel } from "./aberdare/white-rhino-hotel";
+import { saltLickSafariLodge } from "./tsavo/salt-lick-safari-lodge";
+import { kilaguniSerenaSafariLodge } from "./tsavo/kilaguni-serena-safari-lodge";
+import { severinSafariCamp } from "./tsavo/severin-safari-camp";
+import { voiWildlifeLodge } from "./tsavo/voi-wildlife-lodge";
 
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
@@ -76,5 +80,9 @@ export const knowledgeBaseLodges = [
   bantuAfricaResort,
   lePristineHotel,
   whiteRhinoHotel,
+  saltLickSafariLodge,
+  kilaguniSerenaSafariLodge,
+  severinSafariCamp,
+  voiWildlifeLodge,
   
 ];
