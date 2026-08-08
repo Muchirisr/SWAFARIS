@@ -27,12 +27,14 @@ export const hillcourtResortAndSpa = {
 
   experienceDna: {
     emotionalTone: ["Restorative", "Peaceful", "Elegant"], // corrected from source doc's "Functional Comfort | Rejuvenating | Urban Hideaway" — none valid vocabulary
-    // ONTOLOGY GAP (standing, not fixed on the spot): dropped the corporate/business dimension
-    // from Energy Type per founder decision — that positioning is already captured via the
-    // Bleisure Explorers category and the Corporate Catalyst / Deep-Work Sovereign archetypes
-    // below. No approved Energy Type value currently exists for "business travel" as a driver;
-    // flagged for future consideration if more bleisure-heavy properties are ingested.
-    energyType: ["Wellness"],
+    // RETROFIT: originally logged as a standing ontology gap (dropped the corporate/business
+    // dimension entirely, energyType: ["Wellness"] only), since no approved Energy Type value
+    // existed for logistical/road-trip convenience. Resolved retroactively once "Transit
+    // Convenience" was formally accepted into SWA-DATA-002 (first applied to Buraha Zenoni
+    // Hotel & Resort, also Nakuru batch). The corporate/business-meeting dimension itself is
+    // still intentionally excluded — that positioning is already captured via the Bleisure
+    // Explorers category and the Corporate Catalyst / Deep-Work Sovereign archetypes below.
+    energyType: ["Wellness", "Transit Convenience"],
     experiencePace: "Slow", // confirmed
     comfortPhilosophy: ["Comfort Luxury"],
     comfortPhilosophyDetailed: "Contemporary Comfort", // source doc's "Modern Suburban" is not valid vocabulary; mapped per founder confirmation
