@@ -41,6 +41,19 @@ import { saltLickSafariLodge } from "./tsavo/salt-lick-safari-lodge";
 import { kilaguniSerenaSafariLodge } from "./tsavo/kilaguni-serena-safari-lodge";
 import { severinSafariCamp } from "./tsavo/severin-safari-camp";
 import { voiWildlifeLodge } from "./tsavo/voi-wildlife-lodge";
+import { villaNapaiyan } from "./laikipia/villa-napaiyan";
+import { boranaLodge } from "./laikipia/borana-lodge";
+import { olPejetaSafariCottages } from "./laikipia/ol-pejeta-safari-cottages";
+import { lewaWilderness } from "./laikipia/lewa-wilderness";
+import { loisabaTentedCamp } from "./laikipia/loisaba-tented-camp";
+import { olMalo } from "./laikipia/ol-malo";
+import { suyianLodge } from "./laikipia/suyian-lodge";
+import { siraiHouse } from "./laikipia/sirai-house";
+import { laragaiHouse } from "./laikipia/laragai-house";
+import { saruniSamburu } from "./samburu/saruni-samburu";
+import { elephantBedroomCamp } from "./samburu/elephant-bedroom-camp";
+import { ashnilSamburuCamp } from "./samburu/ashnil-samburu-camp";
+import { soroiLarsensCamp } from "./samburu/soroi-larsens-camp";
 
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
@@ -84,5 +97,18 @@ export const knowledgeBaseLodges = [
   kilaguniSerenaSafariLodge,
   severinSafariCamp,
   voiWildlifeLodge,
+  villaNapaiyan, 
+  boranaLodge,
+  olPejetaSafariCottages,
+  lewaWilderness,
+  loisabaTentedCamp,
+  olMalo,
+  suyianLodge,
+  siraiHouse,
+  laragaiHouse,
+  saruniSamburu,
+  elephantBedroomCamp,
+  ashnilSamburuCamp,
+  soroiLarsensCamp,
   
 ];
