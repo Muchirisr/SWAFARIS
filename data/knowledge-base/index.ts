@@ -54,6 +54,20 @@ import { saruniSamburu } from "./samburu/saruni-samburu";
 import { elephantBedroomCamp } from "./samburu/elephant-bedroom-camp";
 import { ashnilSamburuCamp } from "./samburu/ashnil-samburu-camp";
 import { soroiLarsensCamp } from "./samburu/soroi-larsens-camp";
+import { dianiSeaResort } from "./coast/diani/diani-sea-resort";
+import { almanaraLuxuryBoutiqueHotel } from "./coast/diani/almanara-luxury-boutique-hotel";
+import { baobabBeachResortSpa } from "./coast/diani/baobab-beach-resort-spa";
+import { galuEcolodge } from "./coast/diani/galu-ecolodge";
+import { papillonLagoonReefHotel } from "./coast/diani/papillon-lagoon-reef-hotel";
+export { almanaraLuxuryBoutiqueHotel } from './coast/diani/almanara-luxury-boutique-hotel';
+export { dianiSeaResort } from './coast/diani/diani-sea-resort';
+export { baobabBeachResortSpa } from './coast/diani/baobab-beach-resort-spa';
+export { galuEcolodge } from './coast/diani/galu-ecolodge';
+export { papillonLagoonReefHotel } from './coast/diani/papillon-lagoon-reef-hotel';
+import { travellersBeachHotelSpa } from "./coast/mombasa/travellers-beach-hotel-spa";
+import { severinSeaLodge } from "./coast/mombasa/severin-sea-lodge";
+import { prideinnFlamingoBeachResortSpa } from "./coast/mombasa/prideinn-flamingo-beach-resort-spa";
+
 
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
@@ -110,5 +124,13 @@ export const knowledgeBaseLodges = [
   elephantBedroomCamp,
   ashnilSamburuCamp,
   soroiLarsensCamp,
+  almanaraLuxuryBoutiqueHotel,
+  dianiSeaResort,
+baobabBeachResortSpa,
+  galuEcolodge,
+  papillonLagoonReefHotel,
+  travellersBeachHotelSpa,
+  severinSeaLodge,
+  prideinnFlamingoBeachResortSpa,
   
 ];
