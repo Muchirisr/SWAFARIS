@@ -67,8 +67,10 @@ export { papillonLagoonReefHotel } from './coast/diani/papillon-lagoon-reef-hote
 import { travellersBeachHotelSpa } from "./coast/mombasa/travellers-beach-hotel-spa";
 import { severinSeaLodge } from "./coast/mombasa/severin-sea-lodge";
 import { prideinnFlamingoBeachResortSpa } from "./coast/mombasa/prideinn-flamingo-beach-resort-spa";
-
-
+import { hemingwaysWatamu } from "./coast/watamu/hemingways-watamu";
+import { ecoVillasWatamu } from "./coast/watamu/eco-villas-watamu";
+import { simbaWaKaleSuites } from "./coast/watamu/simba-wa-kale-suites";
+import { deltaDunes } from "./coast/malindi/delta-dunes";
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
   lenchadaTouristCamp,
@@ -132,5 +134,8 @@ baobabBeachResortSpa,
   travellersBeachHotelSpa,
   severinSeaLodge,
   prideinnFlamingoBeachResortSpa,
-  
+  hemingwaysWatamu,
+  ecoVillasWatamu,
+  simbaWaKaleSuites,
+  deltaDunes,
 ];
