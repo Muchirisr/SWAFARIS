@@ -71,6 +71,10 @@ import { hemingwaysWatamu } from "./coast/watamu/hemingways-watamu";
 import { ecoVillasWatamu } from "./coast/watamu/eco-villas-watamu";
 import { simbaWaKaleSuites } from "./coast/watamu/simba-wa-kale-suites";
 import { deltaDunes } from "./coast/malindi/delta-dunes";
+import { mandaBayIslandResort } from "./coast/lamu/manda-bay-island-resort";
+import { argyleGrandHotel } from "./nairobi/argyle-grand-hotel";
+import { tamarindTreeHotel } from "./nairobi/tamarind-tree-hotel";
+import { villaRosaKempinskiNairobi } from "./nairobi/villa-rosa-kempinski-nairobi";
 export const knowledgeBaseLodges = [
   explorenatureMaraLodge,
   lenchadaTouristCamp,
@@ -138,4 +142,9 @@ baobabBeachResortSpa,
   ecoVillasWatamu,
   simbaWaKaleSuites,
   deltaDunes,
+  mandaBayIslandResort,
+  argyleGrandHotel,
+  tamarindTreeHotel,
+  villaRosaKempinskiNairobi,
+  
 ];
