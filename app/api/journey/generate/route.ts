@@ -32,41 +32,44 @@ export async function POST(request: Request) {
 
   // Best-effort side path: saving is a bonus, not the point. A failure
   // here is logged, but the traveler still gets their blueprint.
+  // The blueprint is nested inside the session create, so Prisma runs
+  // both as ONE transaction: all saved, or nothing saved.
   try {
-    const session = await prisma.onboardingSession.create({
-      data: { answers: answers as unknown as Prisma.InputJsonValue, completedAt: new Date() },
-    });
-
-    await prisma.journeyBlueprint.create({
+    await prisma.onboardingSession.create({
       data: {
-        sessionId: session.id,
-        identityTitle: blueprint.identityTitle,
-        journeyTheme: blueprint.journeyTheme,
-        journeyPhilosophy: blueprint.journeyPhilosophy,
-        compass: blueprint.compass as unknown as Prisma.InputJsonValue,
-        whyThisFits: blueprint.whyThisFits,
-        summary: blueprint.summary as unknown as Prisma.InputJsonValue,
-        shareSlug: toShareSlug(blueprint.identityTitle),
-        chapters: {
-          create: blueprint.timeline.map((chapter, index) => ({
-            lodgeId: chapter.lodgeId,
-            dayRange: chapter.dayRange,
-            title: chapter.title,
-            region: chapter.region,
-            purpose: chapter.purpose,
-            highlights: chapter.highlights,
-            order: index,
-          })),
-        },
-        cards: {
-          create: blueprint.experienceCards.map((card, index) => ({
-            lodgeId: card.lodgeId,
-            tags: card.tags,
-            emotionalDescription: card.emotionalDescription,
-            whySelected: card.whySelected,
-            tier: card.tier,
-            order: index,
-          })),
+        answers: answers as unknown as Prisma.InputJsonValue,
+        completedAt: new Date(),
+        blueprint: {
+          create: {
+            identityTitle: blueprint.identityTitle,
+            journeyTheme: blueprint.journeyTheme,
+            journeyPhilosophy: blueprint.journeyPhilosophy,
+            compass: blueprint.compass as unknown as Prisma.InputJsonValue,
+            whyThisFits: blueprint.whyThisFits,
+            summary: blueprint.summary as unknown as Prisma.InputJsonValue,
+            shareSlug: toShareSlug(blueprint.identityTitle),
+            chapters: {
+              create: blueprint.timeline.map((chapter, index) => ({
+                lodgeId: chapter.lodgeId,
+                dayRange: chapter.dayRange,
+                title: chapter.title,
+                region: chapter.region,
+                purpose: chapter.purpose,
+                highlights: chapter.highlights,
+                order: index,
+              })),
+            },
+            cards: {
+              create: blueprint.experienceCards.map((card, index) => ({
+                lodgeId: card.lodgeId,
+                tags: card.tags,
+                emotionalDescription: card.emotionalDescription,
+                whySelected: card.whySelected,
+                tier: card.tier,
+                order: index,
+              })),
+            },
+          },
         },
       },
     });
