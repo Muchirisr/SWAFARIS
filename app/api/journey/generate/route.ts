@@ -3,6 +3,7 @@ import { randomBytes } from "node:crypto";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db/client";
 import { buildJourneyBlueprint } from "@/lib/sre/buildBlueprint";
+import { onboardingAnswersSchema } from "@/lib/validation/onboardingAnswers";
 import type { OnboardingAnswers } from "@/types/stm";
 
 function toShareSlug(identityTitle: string): string {
@@ -15,7 +16,34 @@ function toShareSlug(identityTitle: string): string {
 }
 
 export async function POST(request: Request) {
-  const answers: OnboardingAnswers = await request.json();
+  // Guard 1: the body must be parseable JSON.
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Request body must be valid JSON." },
+      { status: 400 }
+    );
+  }
+
+  // Guard 2: the JSON must match the onboarding answers schema.
+  // safeParse returns a result instead of throwing, so bad input becomes
+  // a clear 400 with a list of problems, not an unhandled 500.
+  const parsed = onboardingAnswersSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      {
+        error: "Invalid onboarding answers.",
+        issues: parsed.error.issues.map((issue) => ({
+          field: issue.path.map(String).join("."),
+          message: issue.message,
+        })),
+      },
+      { status: 400 }
+    );
+  }
+  const answers: OnboardingAnswers = parsed.data;
 
   // Critical path: if this fails, the traveler genuinely gets nothing,
   // so it fails loudly with a real error response.
