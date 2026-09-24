@@ -76,3 +76,16 @@ export interface JourneyBlueprint {
   timeline: JourneyChapter[];         // Screen 5
   summary: JourneySummary;            // Section 7
 }
+/** Handle to the persisted copy of a blueprint. Deliberately NOT part of
+ *  JourneyBlueprint, which stays the pure SRE output. */
+export interface SavedJourneyRef {
+  blueprintId: string;
+  shareSlug: string;
+}
+
+/** Response shape of POST /api/journey/generate. `saved` is null when the
+ *  journey was generated but could not be persisted. */
+export interface GenerateJourneyResponse {
+  blueprint: JourneyBlueprint;
+  saved: SavedJourneyRef | null;
+}

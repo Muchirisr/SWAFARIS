@@ -34,8 +34,9 @@ export async function POST(request: Request) {
   // here is logged, but the traveler still gets their blueprint.
   // The blueprint is nested inside the session create, so Prisma runs
   // both as ONE transaction: all saved, or nothing saved.
+  let saved: { blueprintId: string; shareSlug: string } | null = null;
   try {
-    await prisma.onboardingSession.create({
+    const session = await prisma.onboardingSession.create({
       data: {
         answers: answers as unknown as Prisma.InputJsonValue,
         completedAt: new Date(),
@@ -72,10 +73,18 @@ export async function POST(request: Request) {
           },
         },
       },
+      include: { blueprint: { select: { id: true, shareSlug: true } } },
     });
+
+    if (session.blueprint) {
+      saved = {
+        blueprintId: session.blueprint.id,
+        shareSlug: session.blueprint.shareSlug,
+      };
+    }
   } catch (error) {
     console.error("Failed to persist journey blueprint:", error);
   }
 
-  return NextResponse.json(blueprint);
+  return NextResponse.json({ blueprint, saved });
 }
