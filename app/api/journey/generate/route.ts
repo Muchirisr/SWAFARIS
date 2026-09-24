@@ -43,9 +43,9 @@ export async function POST(request: Request) {
         identityTitle: blueprint.identityTitle,
         journeyTheme: blueprint.journeyTheme,
         journeyPhilosophy: blueprint.journeyPhilosophy,
-        compass: JSON.stringify(blueprint.compass),
+        compass: blueprint.compass as unknown as Prisma.InputJsonValue,
         whyThisFits: blueprint.whyThisFits,
-        summary: JSON.stringify(blueprint.summary),
+        summary: blueprint.summary as unknown as Prisma.InputJsonValue,
         shareSlug: toShareSlug(blueprint.identityTitle),
         chapters: {
           create: blueprint.timeline.map((chapter, index) => ({
