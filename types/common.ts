@@ -38,27 +38,36 @@ export type TravelerArchetype = (typeof TRAVELER_ARCHETYPES)[number];
 
 export const EMOTIONAL_TONES = [
   "Peaceful",
-  "Cinematic",
+  "Inspirational",
   "Wild",
   "Romantic",
   "Elegant",
-  "Intimate",
+  "Reflective",
   "Adventurous",
   "Rustic",
   "Social",
   "Grounded",
   "Exploratory",
   "Transformative",
+  "Playful",
+  "Exclusive",
+  "Immersive",
+  "Cultural",
 ] as const;
 export type EmotionalTone = (typeof EMOTIONAL_TONES)[number];
 
 export const ENERGY_TYPES = [
-  "Restorative",
+  "Wellness",
   "Nature Immersion",
+  "Luxury Escape",
+  "Wildlife Focus",
+  "Adventure",
+  "Family Connection",
+  "Transit Convenience",
   "High-Energy Safari",
-  "Quiet Luxury",
-  "Cultural Immersion",
-  "Coastal Escape",
+  "Cultural Discovery",
+  "Photography",
+  "Digital Detox",
 ] as const;
 export type EnergyType = (typeof ENERGY_TYPES)[number];
 

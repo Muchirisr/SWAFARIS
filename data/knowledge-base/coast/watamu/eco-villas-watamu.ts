@@ -33,7 +33,10 @@ export const ecoVillasWatamu = {
 
   experienceDna: {
     // "Intimate," "Peaceful," "Rustic" are all canonical as-stated — no correction needed.
-    emotionalTone: ["Intimate", "Peaceful", "Rustic"],
+       // CORRECTED 2026-09-25: "Intimate" is not a valid final value per the Intimate case-by-case
+    // rule — Honeymooners is a poorFit here with no romantic narrative support, so it resolves to
+    // "Reflective" (the rule's default). "Peaceful" and "Rustic" remain canonical as-stated.
+    emotionalTone: ["Reflective", "Peaceful", "Rustic"],
 
     // Source states "Decompression retreat | Immersive Nature." "Immersive Nature" is a simple
     // word-order variant of canonical "Nature Immersion." "Decompression retreat" isn't canonical

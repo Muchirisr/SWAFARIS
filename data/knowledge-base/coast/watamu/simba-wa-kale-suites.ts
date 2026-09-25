@@ -33,7 +33,11 @@ export const simbaWaKaleSuites = {
   experienceDna: {
     // "Cinematic" substituted with "Inspirational" per standing rule; "Elegant" and "Intimate" are
     // canonical as-stated.
-    emotionalTone: ["Inspirational", "Elegant", "Intimate"],
+        // "Cinematic" substituted with "Inspirational" per standing rule. CORRECTED 2026-09-25:
+    // "Intimate" is not a valid final value per the Intimate case-by-case rule — Honeymooners is an
+    // ideal-High fit here with explicit romantic narrative language ("romantic decompression"),
+    // so it resolves to "Romantic".
+    emotionalTone: ["Inspirational", "Elegant", "Romantic"],
 
     // Source states "Decompression retreat | Quiet luxury" — the same non-canonical pattern
     // resolved twice already (Severin Sea Lodge, Hemingways Watamu) → Wellness + Luxury Escape.

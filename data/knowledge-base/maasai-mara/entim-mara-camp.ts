@@ -21,10 +21,16 @@ export const entimMaraCampEnrichment = {
   pairsWellWith: ["ol-tukai-lodge", "the-cliff", "almanara-luxury-boutique-hotel"], // preserved EXACTLY — do not disturb existing relationships
   rawSourceJson: { /* both source documents, verbatim */ },
 
-  // EDF core — copied verbatim from the live record, NOT re-derived, since
-  // it's already accurate and referenced by existing generated journeys.
+    // EDF core — was copied verbatim from the live record. emotionalTone corrected 2026-09-25 (see
+  // below): a traveler's saved blueprint snapshots its own tags at generation time, so correcting
+  // this source record doesn't retroactively affect any existing generated journey.
   experienceDna: {
-    emotionalTone: ["Cinematic", "Wild", "Intimate"],
+    // "Cinematic" substituted with "Inspirational" per standing rule. "Intimate" is not a valid
+    // final value per the Intimate case-by-case rule; Honeymooners is a poorFit here, and the
+    // mechanical "Reflective" default is a poor semantic fit for this lodge's peak-intensity
+    // narrative, so founder approved the exception "Immersive" — the exact word used in this
+    // lodge's own emotionalFeel field ("Thrilling, immersive, and primal"). "Wild" unchanged.
+    emotionalTone: ["Inspirational", "Wild", "Immersive"],
     energyType: ["Nature Immersion", "High-Energy Safari"],
     experiencePace: "Fast",
     comfortPhilosophy: ["Adventure Luxury", "Authentic Luxury"],
