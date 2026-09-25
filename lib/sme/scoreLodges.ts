@@ -9,7 +9,7 @@ import type { CompatibilityScore, CompatibilityTier } from "@/types/sme";
 import type { BudgetTier, TravelFatigue } from "@/types/common";
 
 const BUDGET_ORDER: BudgetTier[] = ["Value", "Mid-range", "Premium", "Luxury", "Ultra Luxury"];
-const FATIGUE_ORDER: TravelFatigue[] = ["Very Low", "Low", "Medium", "High", "Very High"];
+const FATIGUE_ORDER: TravelFatigue[] = ["Extremely Low", "Very Low", "Low", "Medium", "High", "Very High"];
 const MAX_FATIGUE_BY_DURATION: Record<string, number> = {
   "3-5 Days": 1, // Low
   "6-8 Days": 2, // Medium
@@ -58,11 +58,12 @@ export function scoreLodges(profile: TravelerProfile, lodges: Lodge[]): Compatib
     const edfMatch = comfortMatch + archetypeOverlap + authenticityMatch;
 
     // --- Category 3: Journey Role Fit (15%) ---
+       // --- Category 3: Journey Role Fit (15%) ---
     let roleFit = 8; // baseline
-    if (dna.journeyRole === "Recovery Reset" && d.recoveryNeed > 65) roleFit = 15;
+    if (dna.journeyRole === "Recovery" && d.recoveryNeed > 65) roleFit = 15;
     if (dna.journeyRole === "Safari Climax" && d.travelIntention > 60) roleFit = 15;
     if (
-      (dna.journeyRole === "Romantic Finale" || dna.journeyRole === "Coastal Decompression") &&
+      (dna.journeyRole === "Grand Finale" || dna.journeyRole === "Reflection") &&
       (profile.archetypes.primary === "Honeymooners" || profile.archetypes.primary === "Burned-Out Executives")
     ) {
       roleFit = 15;

@@ -68,11 +68,12 @@ export type ExperiencePace = (typeof EXPERIENCE_PACES)[number];
 // Post-merge (v1.1): Mid-Journey Peak has been folded into Safari Climax.
 export const JOURNEY_ROLES = [
   "Opening Immersion",
-  "Adventure Transition",
+  "Adventure Peak",
   "Safari Climax",
-  "Recovery Reset",
-  "Romantic Finale",
-  "Coastal Decompression",
+  "Mid-Journey Transition",
+  "Reflection",
+  "Recovery",
+  "Grand Finale",
 ] as const;
 export type JourneyRole = (typeof JOURNEY_ROLES)[number];
 
@@ -85,6 +86,7 @@ export const SOCIAL_DYNAMICS = [
 export type SocialDynamic = (typeof SOCIAL_DYNAMICS)[number];
 
 export const TRAVEL_FATIGUE_LEVELS = [
+  "Extremely Low",
   "Very Low",
   "Low",
   "Medium",

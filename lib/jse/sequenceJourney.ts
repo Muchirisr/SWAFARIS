@@ -12,11 +12,12 @@ const ACT_ORDER: JourneyAct[] = ["arrival", "immersion", "climax", "reflection",
 
 const ROLE_TO_ACT: Record<JourneyRole, JourneyAct> = {
   "Opening Immersion": "arrival",
-  "Adventure Transition": "immersion",
+  "Adventure Peak": "immersion",
   "Safari Climax": "climax",
-  "Recovery Reset": "reflection",
-  "Romantic Finale": "farewell",
-  "Coastal Decompression": "farewell",
+  "Mid-Journey Transition": "immersion",
+  "Reflection": "reflection",
+  "Recovery": "reflection",
+  "Grand Finale": "farewell",
 };
 
 const TRIP_DURATION_DAYS: Record<string, number> = {
