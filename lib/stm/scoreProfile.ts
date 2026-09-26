@@ -4,6 +4,7 @@
 
 import type { OnboardingAnswers, STMDimensionScores, TravelerProfile } from "@/types/stm";
 import type { TravelerArchetype } from "@/types/common";
+import { classifySubArchetype, applySubArchetypeNudge } from "./subArchetypes";
 
 const TRAVEL_INTENTION_SCALE: Record<string, number> = {
   Discovery: 55, Adventure: 90, Connection: 40, Recovery: 15,
@@ -121,9 +122,17 @@ export function scoreProfile(answers: OnboardingAnswers): TravelerProfile {
     authenticityAppetite: AUTHENTICITY_SCALE[answers.authenticityAppetite] ?? 50,
   };
 
+  const archetypes = resolveArchetypes(answers);
+  // Sub-archetype is classified within the PRIMARY archetype only, from
+  // the un-nudged dimensions, then its nudge is applied. Traveler-side
+  // refinement only — see lib/stm/subArchetypes.ts for scope notes.
+  const subArchetype = classifySubArchetype(archetypes.primary, dimensions, answers);
+  const nudgedDimensions = applySubArchetypeNudge(dimensions, subArchetype);
+
   return {
-    archetypes: resolveArchetypes(answers),
-    dimensions,
+    archetypes,
+    subArchetype,
+    dimensions: nudgedDimensions,
     comfortPhilosophy: answers.comfortPhilosophy,
     hiddenIntent: answers.hiddenIntent,
     budgetTier: answers.budgetTier,

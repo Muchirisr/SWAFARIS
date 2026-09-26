@@ -2,7 +2,13 @@
 // Types for the Swafaris Traveler Model (STM).
 // STM answers: "Who is this traveler, and what do they need?"
 
-import type { BudgetTier, ComfortPhilosophy, TravelerArchetype, TripDuration } from "./common";
+import type {
+  BudgetTier,
+  ComfortPhilosophy,
+  TravelerArchetype,
+  TravelerSubArchetype,
+  TripDuration,
+} from "./common";
 
 /**
  * Raw answers submitted during onboarding (Screen 2).
@@ -52,7 +58,15 @@ export interface TravelerProfile {
     primary: TravelerArchetype;
     secondary: TravelerArchetype;
   };
-  dimensions: STMDimensionScores; // SERVER-ONLY, see above
+  /**
+   * Sub-archetype classified within the primary archetype (see
+   * lib/stm/subArchetypes.ts). Traveler-side refinement only — lodges are
+   * NOT tagged with sub-archetypes yet, so this affects scoring only via
+   * the nudge already applied to `dimensions` below, not via any direct
+   * lodge-side comparison.
+   */
+  subArchetype: TravelerSubArchetype;
+  dimensions: STMDimensionScores; // SERVER-ONLY, see above — already nudged by subArchetype
   comfortPhilosophy: ComfortPhilosophy;
   hiddenIntent: string;
   budgetTier: BudgetTier;
